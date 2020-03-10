@@ -24,7 +24,12 @@ MODDIR=${0%/*}
 
 # Enable OTG by default
        echo 1 > /sys/class/power_supply/usb/otg_switch
-    
+       
+# Input boost and stune configuration
+       echo "0:1056000 1:0 2:0 3:0 4:1056000 5:0 6:0 7:0" > /sys/module/cpu_boost/parameters/input_boost_freq
+       echo 450 > /sys/module/cpu_boost/parameters/input_boost_ms
+       echo 15 > /sys/module/cpu_boost/parameters/dynamic_stune_boost
+       
 # Fix laggy bilibili feed scrolling
        change_task_cgroup "servicemanager" "top-app" "cpuset"
        change_task_cgroup "servicemanager" "foreground" "stune"

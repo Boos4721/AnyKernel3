@@ -25,23 +25,28 @@ MODDIR=${0%/*}
 # Enable OTG by default
        echo 1 > /sys/class/power_supply/usb/otg_switch
 
+# Input boost and stune configuration
+       echo "0:1056000 1:0 2:0 3:0 4:0 5:0 6:0 7:0" > /sys/module/cpu_boost/parameters/input_boost_freq
+       echo 500 > /sys/module/cpu_boost/parameters/input_boost_ms
+       echo 5 > /dev/stune/top-app/schedtune.boost
+
 # Configure cpu governor settings
-         echo "schedhorizon" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-         echo 60 > /sys/devices/system/cpu/cpu0/cpufreq/blu_schedutil/up_rate_limit_us
-         echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/blu_schedutil/down_rate_limit_us
-         echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/blu_schedutil/iowait_boost_enable
-         echo "schedhorizon" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
-         echo 90 > /sys/devices/system/cpu/cpu4/cpufreq/blu_schedutil/up_rate_limit_us
-         echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/blu_schedutil/down_rate_limit_us
-         echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/blu_schedutil/iowait_boost_enable
+        echo "schedhorizon" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+        echo 60 > /sys/devices/system/cpu/cpu0/cpufreq/blu_schedutil/up_rate_limit_us
+        echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/blu_schedutil/down_rate_limit_us
+        echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/blu_schedutil/iowait_boost_enable
+        echo "schedhorizon" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+        echo 90 > /sys/devices/system/cpu/cpu4/cpufreq/blu_schedutil/up_rate_limit_us         
+	echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/blu_schedutil/down_rate_limit_us
+        echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/blu_schedutil/iowait_boost_enable
       
 # Disable Boost_No_Override
-	  echo 0 > /dev/stune/foreground/schedtune.sched_boost_no_override 
-	  echo 0 > /dev/stune/top-app/schedtune.sched_boost_no_override 
+        echo 0 > /dev/stune/foreground/schedtune.sched_boost_no_override 
+        echo 0 > /dev/stune/top-app/schedtune.sched_boost_no_override 
 
 # Set default schedTune value for foreground/top-app
-	    echo 1 > /dev/stune/foreground/schedtune.prefer_idle
-	    echo 1 > /dev/stune/top-app/schedtune.prefer_idle
+        echo 1 > /dev/stune/foreground/schedtune.prefer_idle
+        echo 1 > /dev/stune/top-app/schedtune.prefer_idle
         echo 1 > /dev/stune/top-app/schedtune.boost
 
 # Tweak IO performance after boot complete

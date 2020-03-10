@@ -61,11 +61,3 @@ MODDIR=${0%/*}
 
 # Set TCP congestion algorithm
       echo "westwood" > /proc/sys/net/ipv4/tcp_congestion_control
-
-echo "Boot Hentai completed " >> /dev/kmsg
-
-# OnePlus opchain pins UX threads on the big cluster
-      lock_val "0" /sys/module/opchain/parameters/chain_on
-       
-echo "Boot Hentai completed " >> /dev/kmsg
-

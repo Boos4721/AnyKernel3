@@ -19,12 +19,13 @@ MODDIR=${0%/*}
        echo 1 > /sys/class/power_supply/usb/otg_switch
     
 
-    # Configure governor settings for little cluster
+# Configure governor settings for little cluster
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedhorizon"
     write /sys/devices/system/cpu/cpufreq/policy0/schedhorizon/up_rate_limit_us 200
     write /sys/devices/system/cpu/cpufreq/policy0/schedhorizon/down_rate_limit_us 20000
     write /sys/devices/system/cpu/cpufreq/policy0/schedhorizon/iowait_boost_enable 1
-    # Configure governor settings for big cluster
+
+# Configure governor settings for big cluster
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "schedhorizon"
     write /sys/devices/system/cpu/cpufreq/policy4/schedhorizon/up_rate_limit_us 200
     write /sys/devices/system/cpu/cpufreq/policy4/schedhorizon/down_rate_limit_us 20000

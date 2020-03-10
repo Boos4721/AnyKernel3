@@ -5,13 +5,8 @@ MODDIR=${0%/*}
 
 # 此脚本将在post-fs-data模式下执行
 
-# Thanks Yc9559
-
 # Change Selinux status as per user desire
     setenforce 0
-    
-# OnePlus opchain pins UX threads on the big cluster
-       lock_val "0" /sys/module/opchain/parameters/chain_on
 
 # Set backlight min value as per user desire
        echo 1 > /sys/module/msm_drm/parameters/backlight_min 

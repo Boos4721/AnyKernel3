@@ -52,7 +52,7 @@ MODDIR=${0%/*}
         echo "westwood" > /proc/sys/net/ipv4/tcp_congestion_control
 
 # OnePlus opchain pins UX threads on the big cluster
-       lock_val "0" /sys/module/opchain/parameters/chain_on
+#       lock_val "0" /sys/module/opchain/parameters/chain_on
        
 echo "Boot Hentai completed " >> /dev/kmsg
 

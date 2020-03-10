@@ -27,29 +27,24 @@ ramdisk_compression=auto;
 # import patching functions/variables - see for reference
 . tools/ak3-core.sh;
 
-ui_print " "; ui_print "Trimming partitions...";
+ui_print " "; ui_print "Trimming Partitions...";
 $bin/busybox/fstrim -v /data
 
 # Clean up other kernels' ramdisk overlay.d files
+rm -rf /overlay.d
 rm -rf $ramdisk/overlay.d
 
 ## AnyKernel file attributes
-# set permissions/ownership for included ramdisk files
-set_perm_recursive 0 0 755 644 $ramdisk/*;
-set_perm_recursive 0 0 750 750 $ramdisk/init* $ramdisk/sbin;
-
 
 ## AnyKernel install
 dump_boot;
 
 # Add our ramdisk files if Magisk is installed
-ui_print " "; ui_print "Installing Hentai Kernel Ramdisk Files..."
-mv /tmp/anykernel/overlay.d $ramdisk/overlay.d
-cp -f /system_root/init.rc $ramdisk/overlay.d
+
 rm -rf /data/adb/modules/Hentai
 mkdir -p /data/adb/modules/Hentai
-cp -Rf $home/magisk/* /data/adb/modules/Hentai
-ui_print "Installing Hentai Kernel Magisk Module"
+cp -rf $home/magisk/* /data/adb/modules/Hentai
+ui_print " "; ui_print "Installing Hentai Kernel Magisk Module"
 
 if [ -d $ramdisk/.backup ]; then
   patch_cmdline "skip_override" "skip_override";
@@ -58,13 +53,10 @@ else
 fi;
 
 # end ramdisk changes
-
+ui_print " "; ui_print "Installing Hentai Kernel System Files..."
 mount -o rw,remount -t auto /system;
-chattr -R -a /system/vendor/etc/perf/;
-chattr -R -i /system/vendor/etc/perf/;
-ui_print "Installing Sqlite Files..."
+ui_print " "; ui_print "Installing Sqlite Files..."
 cp -rf $home/system/* /system/;
-chattr -R +i /system/vendor/etc/perf/;
 mount -o ro,remount -t auto /system;
 
 write_boot;

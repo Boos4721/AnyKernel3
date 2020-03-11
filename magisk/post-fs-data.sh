@@ -27,15 +27,11 @@ MODDIR=${0%/*}
 
 # Configure cpu governor settings
        echo "schedhorizon" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-       echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_rate_limit_us
-       echo 50 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/down_rate_limit_us
        echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/iowait_boost_enable
        echo 300000 /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/hispeed_freq 
        echo 90 /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/hispeed_load 
        echo "schedhorizon" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
-       echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/up_rate_limit_us
-       echo 60 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/down_rate_limit_us
-       echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/iowait_boost_enable
+       echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/iowait_boost_enable
        echo 2476800 /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/hispeed_freq 
        echo 90 /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/hispeed_load
       

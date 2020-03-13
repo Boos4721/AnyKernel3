@@ -13,32 +13,30 @@ MODDIR=${0%/*}
 
 # Enable fast charge as per user desire
        echo 1 > /sys/kernel/fast_charge/force_fast_charge
- 
-# Disable adrenoboost
-       echo 0 > /sys/class/devfreq/5000000.qcom,kgsl-3d0/adrenoboost
-
+       
 # Enable OTG by default
        echo 1 > /sys/class/power_supply/usb/otg_switch
     
 # Input boost and stune configuration
-       echo "0:1056000 1:0 2:0 3:0 4:1056000 5:0 6:0 7:0" > /sys/module/cpu_boost/parameters/input_boost_freq
-       echo 450 > /sys/module/cpu_boost/parameters/input_boost_ms
-       echo 15 > /sys/module/cpu_boost/parameters/dynamic_stune_boost
+       echo "0:1056000 1:0 2:0 3:0 4:0 5:0 6:0 7:0" > /sys/module/cpu_boost/parameters/input_boost_freq
+       echo 500 > /sys/module/cpu_boost/parameters/input_boost_ms
+       echo 5 > /dev/stune/top-app/schedtune.boost
 
 # Configure cpu governor settings
-       echo "schedhorizon" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-       echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_rate_limit_us
-       echo 50 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/down_rate_limit_us
-       echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/iowait_boost_enable
-       echo 300000 /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/hispeed_freq 
-       echo 90 /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/hispeed_load 
-       echo "schedhorizon" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
-       echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/up_rate_limit_us
-       echo 60 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/down_rate_limit_us
-       echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/iowait_boost_enable
-       echo 2476800 /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/hispeed_freq 
-       echo 90 /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/hispeed_load
+      echo "schedhorizon" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+      echo 60 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_rate_limit_us
+      echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/down_rate_limit_us
+      echo "schedhorizon" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+      echo 90 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/up_rate_limit_us
+      echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/down_rate_limit_us
       
+# Set min cpu freq
+      echo 480000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+      echo 825600 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
+
+# Set gpu freq
+       echo 130000000 > /sys/class/devfreq/5000000.qcom,kgsl-3d0/min_freq
+            
 # Disable Boost_No_Override
       echo 0 > /dev/stune/foreground/schedtune.sched_boost_no_override 
       echo 0 > /dev/stune/top-app/schedtune.sched_boost_no_override 

@@ -25,12 +25,12 @@ MODDIR=${0%/*}
 # Configure cpu governor settings
       echo "schedhorizon" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
       echo 500 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_rate_limit_us
-      echo 2000 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/down_rate_limit_us
+      echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/down_rate_limit_us
       echo 1056000 1612800/sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/efficient_freq
       echo 30 50 /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_delay
       echo "schedhorizon" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
       echo 500 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/up_rate_limit_us
-      echo 2000 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/down_rate_limit_us
+      echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/down_rate_limit_us
       echo 1843200 2476800/sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/efficient_freq
       echo 50 60 /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_delay
       

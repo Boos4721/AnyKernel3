@@ -26,13 +26,13 @@ MODDIR=${0%/*}
       echo "schedhorizon" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
       echo 500 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_rate_limit_us
       echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/down_rate_limit_us
-      echo 1056000 1612800/sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/efficient_freq
-      echo 30 50 /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_delay
+      echo 1056000 1612800 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/efficient_freq
+      echo 30 50 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_delay
       echo "schedhorizon" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
       echo 500 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/up_rate_limit_us
       echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/down_rate_limit_us
-      echo 1843200 2476800/sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/efficient_freq
-      echo 50 60 /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_delay
+      echo 1843200 2476800 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/efficient_freq
+      echo 50 60 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_delay
       
 # Set min cpu freq
       echo 480000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq

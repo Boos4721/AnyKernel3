@@ -30,8 +30,8 @@ MODDIR=${0%/*}
        echo 200 > /sys/devices/system/cpu/cpufreq/policy4/schedhorizon/up_rate_limit_us 
        echo 20000 > /sys/devices/system/cpu/cpufreq/policy4/schedhorizon/down_rate_limit_us 
        echo 1 > /sys/devices/system/cpu/cpufreq/policy4/schedhorizon/iowait_boost_enable 
-       echo 6528000 1056000 2208000 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/efficient_freq
-       echo 40 70 75> /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_delay
+       echo 6528000 1056000 2208000 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/efficient_freq
+       echo 40 70 75> /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/up_delay
 
 # Disable Boost_No_Override
 	echo 0 > /dev/stune/foreground/schedtune.sched_boost_no_override 

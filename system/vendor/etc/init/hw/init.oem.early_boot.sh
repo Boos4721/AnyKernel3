@@ -1,6 +1,3 @@
-# Change Selinux status as per user desire
-    setenforce 0
-
 # Set backlight min value as per user desire
        echo 1 > /sys/module/msm_drm/parameters/backlight_min 
 
@@ -24,8 +21,8 @@
       echo "schedhorizon" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
       echo 500 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/up_rate_limit_us
       echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/down_rate_limit_us
-      echo 1843200 2476800 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/efficient_freq
-      echo 50 60 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_delay
+      echo 1843200 2476800 2649600 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/efficient_freq
+      echo 50 60 65 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_delay
       
 # Set min cpu freq
       echo 480000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
@@ -49,7 +46,6 @@
 
 # Set TCP congestion algorithm
       echo "westwood" > /proc/sys/net/ipv4/tcp_congestion_control
-
 if [ -f /wlan_aging.ko ]; then
 #    beacause system partition must not mount as r/w, so do nothing here
 #    ln -s -f /wlan_aging.ko /system/lib/modules/wlan.ko

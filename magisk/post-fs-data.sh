@@ -22,8 +22,8 @@ MODDIR=${0%/*}
        echo 150 > /sys/devices/system/cpu/cpufreq/policy0/schedhorizon/up_rate_limit_us
        echo 200 > /sys/devices/system/cpu/cpufreq/policy0/schedhorizon/down_rate_limit_us 
        echo 1 > /sys/devices/system/cpu/cpufreq/policy0/schedhorizon/iowait_boost_enable 
-       echo 441600 960000 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/efficient_freq
-       echo 50 60 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_delay
+       echo 4416000 10368000 14016000 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/efficient_freq
+       echo 50 60 76 > /sys/devices/system/cpu/cpu0/cpufreq/schedhorizon/up_delay
        
 # Configure governor settings for big cluster
        echo "schedhorizon" >/sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
@@ -31,7 +31,7 @@ MODDIR=${0%/*}
        echo 20000 > /sys/devices/system/cpu/cpufreq/policy4/schedhorizon/down_rate_limit_us 
        echo 1 > /sys/devices/system/cpu/cpufreq/policy4/schedhorizon/iowait_boost_enable 
        echo 8064000 10560000 22080000 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/efficient_freq
-       echo 40 70 75> /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/up_delay
+       echo 40 70 75 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/up_delay
 
 # Disable Boost_No_Override
 	echo 0 > /dev/stune/foreground/schedtune.sched_boost_no_override 

@@ -27,10 +27,10 @@ MODDIR=${0%/*}
        
 # Configure governor settings for big cluster
        echo "schedhorizon" >/sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
-       echo 150 > /sys/devices/system/cpu/cpufreq/policy4/schedhorizon/up_rate_limit_us 
-       echo 200 > /sys/devices/system/cpu/cpufreq/policy4/schedhorizon/down_rate_limit_us 
+       echo 50 > /sys/devices/system/cpu/cpufreq/policy4/schedhorizon/up_rate_limit_us 
+       echo 20000 > /sys/devices/system/cpu/cpufreq/policy4/schedhorizon/down_rate_limit_us 
        echo 1 > /sys/devices/system/cpu/cpufreq/policy4/schedhorizon/iowait_boost_enable 
-       echo 652800 806000 1497000 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/efficient_freq
+       echo 8064000 10560000 22080000 > /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/efficient_freq
        echo 40 70 75> /sys/devices/system/cpu/cpu4/cpufreq/schedhorizon/up_delay
 
 # Disable Boost_No_Override

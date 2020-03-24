@@ -41,11 +41,12 @@
       echo 1 > /dev/stune/top-app/schedtune.boost
 
 # Tweak IO performance after boot complete
-      echo "bfq" > /sys/block/sda/queue/scheduler
+      echo "cfq" > /sys/block/sda/queue/scheduler
       echo 64 > /sys/block/sda/queue/read_ahead_kb
 
 # Set TCP congestion algorithm
       echo "westwood" > /proc/sys/net/ipv4/tcp_congestion_control
+      
 if [ -f /wlan_aging.ko ]; then
 #    beacause system partition must not mount as r/w, so do nothing here
 #    ln -s -f /wlan_aging.ko /system/lib/modules/wlan.ko

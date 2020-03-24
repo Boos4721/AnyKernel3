@@ -43,7 +43,7 @@ MODDIR=${0%/*}
         echo 1 > /dev/stune/top-app/schedtune.boost
 
 # Tweak IO performance after boot complete
-        echo "zen" > /sys/block/sda/queue/scheduler
+        echo "cfq" > /sys/block/sda/queue/scheduler
         echo 64 > /sys/block/sda/queue/read_ahead_kb
 
 # Set TCP congestion algorithm

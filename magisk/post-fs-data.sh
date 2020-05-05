@@ -9,18 +9,18 @@ MODDIR=${0%/*}
     setenforce 0
 
 # Set backlight min value as per user desire
-       echo 1 > /sys/module/msm_drm/parameters/backlight_min 
+      echo 1 > /sys/module/msm_drm/parameters/backlight_min 
 
 # Enable fast charge as per user desire
-       echo 1 > /sys/kernel/fast_charge/force_fast_charge
+      echo 1 > /sys/kernel/fast_charge/force_fast_charge
        
 # Enable OTG by default
-       echo 1 > /sys/class/power_supply/usb/otg_switch
+      echo 1 > /sys/class/power_supply/usb/otg_switch
     
 # Input boost and stune configuration
-       echo "0:1056000 1:0 2:0 3:0 4:0 5:0 6:0 7:0" > /sys/module/cpu_boost/parameters/input_boost_freq
-       echo 500 > /sys/module/cpu_boost/parameters/input_boost_ms
-       echo 5 > /dev/stune/top-app/schedtune.boost
+      echo "0:1056000 1:0 2:0 3:0 4:0 5:0 6:0 7:0" > /sys/module/cpu_boost/parameters/input_boost_freq
+      echo 500 > /sys/module/cpu_boost/parameters/input_boost_ms
+      echo 5 > /dev/stune/top-app/schedtune.boost
 
 # Configure cpu governor settings
       echo "schedhorizon" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
@@ -39,7 +39,7 @@ MODDIR=${0%/*}
       echo 825600 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
 
 # Set gpu freq
-       echo 130000000 > /sys/class/devfreq/5000000.qcom,kgsl-3d0/min_freq
+      echo 130000000 > /sys/class/devfreq/5000000.qcom,kgsl-3d0/min_freq
             
 # Disable Boost_No_Override
       echo 0 > /dev/stune/foreground/schedtune.sched_boost_no_override 
